@@ -9,7 +9,6 @@ class Variable:
     def __init__(self, data):
         self.data = data
 
-
 # here is example, 
 #
 data = np.array(1.0) # made 0-dimensional data
