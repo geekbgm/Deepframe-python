@@ -1,6 +1,6 @@
 import numpy as np
 
-## Copy right 2021 Signal Processing and Machine learning at Inha Unv.
+## Copyright 2021 Signal Processing and Machine learning at Inha Unv.
 ## arthor : Gyeongmin Bae
 ## date  : 2021 - 07 - 21 (Tue)
 
