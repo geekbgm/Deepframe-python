@@ -12,11 +12,18 @@ class Function:
         x  = input.data
         y = self.forward(x)
         output  = Variable(y)
+        output.set_creator(self) # save creator
+        self.input = input # save input
+        self.output = output # save output
+
         return output
 
     # i'd not define definition of forward function. 
     # Try to define it through overriding.
     def forward(self, x):
+        raise NotImplementedError()
+
+    def backward(self, gy):
         raise NotImplementedError()
 
 # yeah, i define square function through overriding.
@@ -25,11 +32,16 @@ class Function:
 class Square(Function):
     def forward(self, x):
         return x**2
+    
+    def backward(self, gy):
+        x = self.input.data
+        gx = 2*x*gy
+        return gx
 
 ## example
 #
 x = Variable(np.array(10))
 f = Square()
 y = f(x)
-print(x.data)
-print(y)        
+# print(x.data)
+# print(y.data)        
