@@ -17,6 +17,16 @@ def numerical_diff(f,x, eps = 1e-4):
     y1 = f(x1)
     return (y1.data - y0.data)/(x1.data - x0.data)
 
+# comfortable function
+def square(x) : 
+    f = Square()
+    return f(x)
+
+def exp(x) : 
+    f= Exp()
+    return f(x)
+
+
 ## example of forward computational graph
 #
 A=Square()
@@ -129,3 +139,23 @@ y = C(b)
 y.grad = np.array(1.0)
 y.backward()
 print(x.grad)
+
+# automatic backpropagation with comfortable function
+x = Variable2(np.array(0.5))
+a = square(x)
+b = exp(a)
+y = square(b)
+
+y.grad = np.array(1.0)
+y.backward()
+print(x.grad)
+
+# automatic backpropagation 2 with comfortable function
+x = Variable2(np.array(0.5))
+y = square(exp(square(x)))
+
+y.grad = np.array(1.0)
+y.backward()
+print(x.grad)
+
+

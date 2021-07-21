@@ -6,9 +6,9 @@ import numpy as np
 
 from Var import Variable
 
-# input : Variable (reference)
+# input : instance of Variable
 class Function:
-    def __call__(self, input):
+    def __call__(self, input): 
         x  = input.data
         y = self.forward(x)
         output  = Variable(y)
@@ -26,7 +26,7 @@ class Function:
     def backward(self, gy):
         raise NotImplementedError()
 
-# yeah, i define square function through overriding.
+# yeah, i define square function.
 # you can do it too.
 #
 class Square(Function):

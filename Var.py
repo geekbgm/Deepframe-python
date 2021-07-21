@@ -6,9 +6,13 @@ from numpy.lib.utils import deprecate
 ## arthor : Gyeongmin Bae
 ## date  : 2021 - 07 - 21 (Tue)
 
-# input of variable : multi-dimensional array(tensor)
+# input : instance of np.ndarray
 class Variable:
     def __init__(self, data):
+        if data is not None:
+            if not isinstance(data, np.ndarray):
+                raise TypeError('{}은(는) 지원하지 않습니다.'.format(type(data)))
+
         self.data = data
         self.grad = None
         self.creator = None
@@ -33,7 +37,11 @@ class Variable2 :
     def set_creator(self, func):
         self.creator = func
     
+    # using while loop
     def backward(self):
+        if self.grad is None : 
+            self.grad = np.ones_like(self.data)
+            
         func = self.creator
         while func : 
             x, y = func.input, func.output
