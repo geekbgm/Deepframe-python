@@ -1,2 +1,2 @@
 # Deepframe-python
-framework for machine learning(i.e., tensor flow and pythorch  do)
+framework for machine learning(e.g., like what tensor flow and pythorch did)
